@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+  <script src="components/loader.js"></script>
+  <script src="lib/onsenui/js/onsenui.min.js"></script>
+
+  <link rel="stylesheet" href="components/loader.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="lib/onsenui/css/onsen-css-components.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    // Page init event
+    document.addEventListener('init', function(event) {
+      var page = event.target;
+
+      if (page.matches('#first-page')) {
+
+        page.querySelector('#push-button').onclick = function() {
+          document.querySelector('#navigator').pushPage('page2.html');
+        };
+
+      } else if (page.matches('#second-page')) {
+
+        // page.querySelector('#pop-button').onclick = function() {
+        //   document.querySelector('#navigator').popPage();
+        // };
+
+      }
+    });
+
+    if (ons.platform.isIPhoneX()) {
+      document.documentElement.setAttribute('onsflag-iphonex-portrait', '');
+      document.documentElement.setAttribute('onsflag-iphonex-landscape', '');
+    }
+  </script>
+</head>
+<body>
+  <ons-navigator id="navigator" page="page1.html"></ons-navigator>
+
+  <ons-template id="page1.html">
+    <ons-page id="first-page">
+      <ons-toolbar>
+        <div class="center">Sample</div>
+      </ons-toolbar>
+
+      <div class="content" style="text-align: center">
+        <p>OnsenUIを使ったチャットDEMO</p>
+        <ons-button id="push-button">チャット画面へ</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+
+  <ons-template id="page2.html">
+    <ons-page id="second-page">
+      <ons-toolbar>
+        <div class="left"><ons-back-button>戻る</ons-back-button></div>
+        <div class="center">チャット画面</div>
+      </ons-toolbar>
+  
+      <div class="content">
+        <ons-list id="chats">
+          <!-- 右側（自分） -->
+          <ons-list-item modifier="nodivider">
+            <div style="margin: 0 0 0 auto">
+              <span class="message right">こんにちは！</span>
+            </div>
+            <span class="list-item__subtitle" style="text-align: right">2020/03/13 12:55</span>
+          </ons-list-item>
+          
+          <!-- 左側（自分以外） -->
+          <ons-list-item modifier="nodivider">
+            <span class="message">Hello!</span>
+            <span class="list-item__subtitle">2020/03/13 13:00 津田</span>
+          </ons-list-item>
+          <ons-list-item modifier="nodivider">
+            <div style="margin: 0 0 0 auto">
+              <span class="message right">今日は何の勉強をしますか？</span>
+            </div>
+            <span class="list-item__subtitle" style="text-align: right">2020/03/13 13:05</span>
+          </ons-list-item>
+          <ons-list-item modifier="nodivider">
+            <span class="message">英語の勉強にしましょう！</span>
+            <span class="list-item__subtitle">2020/03/13 13:10 津田</span>
+          </ons-list-item>
+          <ons-list-item modifier="nodivider">
+            <span class="message">あ、やっぱり明日小テストだし統計にしようか？</span>
+            <span class="list-item__subtitle">2020/03/13 13:11 津田</span>
+          </ons-list-item>
+          <ons-list-item modifier="nodivider">
+            <span class="message">英語がいいな〜</span>
+            <span class="list-item__subtitle">2020/03/13 13:15 梅子</span>
+          </ons-list-item>
+          <ons-list-item modifier="nodivider">
+            <div style="margin: 0 0 0 auto">
+              <span class="message right">(^_^)b</span>
+            </div>
+            <span class="list-item__subtitle" style="text-align: right">2020/03/13 13:17</span>
+          </ons-list-item>
+      </div>
+
+      <div class="send-area">
+        <ons-input id="message" placeholder="メッセージ"></ons-input>
+        <ons-button id="send" modifier="quiet">送信</ons-button>
+      </div>
+    </ons-page>
+  </ons-template>
+</body>
+</html>
+<template id="page2.html">
+  
+</template>
